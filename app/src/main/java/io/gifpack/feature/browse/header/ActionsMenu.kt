@@ -5,15 +5,21 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.dimensionResource
 import io.gifpack.R
 import io.gifpack.util.Image
 
 @Composable
 fun ActionsMenu(modifier: Modifier = Modifier) {
     Row(modifier = modifier) {
-        Image(resId = getNotificationsRes(), modifier = Modifier.padding(end = 16.dp))
-        Image(resId = R.drawable.ic_history, modifier = Modifier.padding(end = 16.dp))
+        Image(
+            resId = getNotificationsRes(),
+            modifier = Modifier.padding(end = dimensionResource(R.dimen.browse_actions_menu_button_spacing_horizontal))
+        )
+        Image(
+            resId = R.drawable.ic_history,
+            modifier = Modifier.padding(end = dimensionResource(R.dimen.browse_actions_menu_button_spacing_horizontal))
+        )
         Image(resId = R.drawable.ic_settings)
     }
 }
