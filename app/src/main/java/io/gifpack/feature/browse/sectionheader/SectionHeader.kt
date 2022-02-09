@@ -1,4 +1,4 @@
-package io.gifpack.feature.browse.recommendedsection
+package io.gifpack.feature.browse.sectionheader
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,8 +11,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import io.gifpack.R
 import io.gifpack.util.Image
 
 @Composable
@@ -23,7 +25,7 @@ fun SectionHeader(sectionHeaderData: SectionHeaderData, modifier: Modifier = Mod
                 url = imageUrl,
                 modifier = Modifier
                     .clip(CircleShape)
-                    .size(56.dp)
+                    .size(dimensionResource(R.dimen.browse_section_header_image_size))
             )
         }
         Column(modifier = Modifier.padding(start = sectionHeaderData.determinePaddingForHeaderTitle())) {

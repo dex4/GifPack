@@ -1,8 +1,8 @@
 package io.gifpack.feature.browse.model
 
+import io.gifpack.feature.browse.packslist.GifPackData
 import io.gifpack.feature.browse.recents.RecentPackItem
-import io.gifpack.feature.browse.recommendedsection.GifPackItem
-import io.gifpack.feature.browse.recommendedsection.SectionHeaderData
+import io.gifpack.feature.browse.sectionheader.SectionHeaderData
 
 sealed class BrowseListItem(val id: Int) {
 
@@ -12,7 +12,7 @@ sealed class BrowseListItem(val id: Int) {
 
     data class GifPacksList(
         val gifPacksListId: Int,
-        val gifPacks: List<GifPackItem>
+        val gifPacks: List<GifPackData>
     ) : BrowseListItem(gifPacksListId)
 
     data class SectionHeader(

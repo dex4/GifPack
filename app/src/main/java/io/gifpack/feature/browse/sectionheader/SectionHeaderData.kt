@@ -1,4 +1,4 @@
-package io.gifpack.feature.browse.recommendedsection
+package io.gifpack.feature.browse.sectionheader
 
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp

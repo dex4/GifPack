@@ -14,15 +14,16 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.gifpack.feature.browse.browseScreenContent
 import io.gifpack.feature.browse.header.BrowseHeader
 import io.gifpack.feature.browse.model.BrowseListItem
+import io.gifpack.feature.browse.packslist.PacksList
 import io.gifpack.feature.browse.recentPacks
-import io.gifpack.feature.browse.recents.RecentPacks
-import io.gifpack.feature.browse.recommendedsection.PacksList
-import io.gifpack.feature.browse.recommendedsection.SectionHeader
+import io.gifpack.feature.browse.recents.RecentPacksList
+import io.gifpack.feature.browse.sectionheader.SectionHeader
 import io.gifpack.ui.theme.GifPackTheme
 
 @ExperimentalFoundationApi
@@ -36,21 +37,36 @@ class MainActivity : ComponentActivity() {
                 ) {
                     LazyColumn(modifier = Modifier.fillMaxSize()) {
                         item {
-                            BrowseHeader(modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 24.dp))
+                            BrowseHeader(
+                                modifier = Modifier.padding(
+                                    start = dimensionResource(R.dimen.browse_list_margin_horizontal),
+                                    end = dimensionResource(R.dimen.browse_list_margin_horizontal),
+                                    top = dimensionResource(R.dimen.browse_list_margin_top)
+                                )
+                            )
                         }
                         items(browseScreenContent) { item ->
                             when (item) {
-                                is BrowseListItem.RecentPacksList -> RecentPacks(
+                                is BrowseListItem.RecentPacksList -> RecentPacksList(
                                     recentPacks,
-                                    modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 12.dp, bottom = 8.dp)
+                                    modifier = Modifier.padding(
+                                        start = dimensionResource(R.dimen.browse_list_margin_horizontal),
+                                        end = dimensionResource(R.dimen.browse_list_margin_horizontal),
+                                        top = dimensionResource(R.dimen.browse_list_items_spacing_vertical),
+                                        bottom = dimensionResource(R.dimen.browse_list_items_spacing_vertical)
+                                    )
                                 )
                                 is BrowseListItem.SectionHeader -> SectionHeader(
                                     sectionHeaderData = item.sectionHeaderData,
-                                    modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 12.dp)
+                                    modifier = Modifier.padding(
+                                        start = dimensionResource(R.dimen.browse_list_margin_horizontal),
+                                        end = dimensionResource(R.dimen.browse_list_margin_horizontal),
+                                        top = dimensionResource(R.dimen.browse_list_items_spacing_vertical)
+                                    )
                                 )
                                 is BrowseListItem.GifPacksList -> PacksList(
                                     packs = item.gifPacks,
-                                    modifier = Modifier.padding(top = 12.dp)
+                                    modifier = Modifier.padding(top = dimensionResource(R.dimen.browse_list_items_spacing_vertical))
                                 )
                             }
                         }
@@ -72,7 +88,7 @@ fun DefaultPreview() {
         ) {
             Column {
                 Row { BrowseHeader() }
-                Row { RecentPacks(recentPacks) }
+                Row { RecentPacksList(recentPacks) }
             }
         }
     }

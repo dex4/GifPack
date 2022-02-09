@@ -9,16 +9,19 @@ import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.dimensionResource
+import io.gifpack.R
 
 @ExperimentalFoundationApi
 @Composable
-fun RecentPacks(recents: List<RecentPackItem>, modifier: Modifier = Modifier) {
+fun RecentPacksList(recents: List<RecentPackItem>, modifier: Modifier = Modifier) {
     LazyVerticalGrid(
         cells = GridCells.Fixed(2),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        modifier = modifier.wrapContentHeight(unbounded = false).heightIn(0.dp, 300.dp)
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.browse_recent_packs_list_items_spacing)),
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.browse_recent_packs_list_items_spacing)),
+        modifier = modifier
+            .wrapContentHeight(unbounded = false)
+            .heightIn(max = dimensionResource(R.dimen.browse_recent_packs_list_max_height))
     ) {
         items(recents) { pack ->
             RecentPack(item = pack)
