@@ -1,5 +1,7 @@
 package io.gifpack.feature.browse
 
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -17,7 +19,11 @@ fun BrowseScreen() {
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         item {
             BrowseHeader(
-                modifier = Modifier.padding(
+                true,
+                ::onActionMenuItemClicked,
+                ::onActionMenuItemClicked,
+                ::onActionMenuItemClicked,
+                Modifier.padding(
                     start = dimensionResource(R.dimen.browse_list_margin_horizontal),
                     end = dimensionResource(R.dimen.browse_list_margin_horizontal),
                     top = dimensionResource(R.dimen.browse_list_margin_top)
@@ -28,4 +34,8 @@ fun BrowseScreen() {
             BrowseComposableForItemType(item)
         }
     }
+}
+
+private fun onActionMenuItemClicked(itemName: String, context: Context) {
+    Toast.makeText(context, itemName, Toast.LENGTH_SHORT).show()
 }
