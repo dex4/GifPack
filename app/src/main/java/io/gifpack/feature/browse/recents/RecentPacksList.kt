@@ -1,5 +1,6 @@
 package io.gifpack.feature.browse.recents
 
+import android.content.Context
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.heightIn
@@ -12,9 +13,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import io.gifpack.R
 
+typealias OnRecentPackClick = (Int, Context) -> Unit
+
 @ExperimentalFoundationApi
 @Composable
-fun RecentPacksList(recents: List<RecentPackItem>, modifier: Modifier = Modifier) {
+fun RecentPacksList(recents: List<RecentPackItem>, onRecentPackClick: OnRecentPackClick, modifier: Modifier = Modifier) {
     LazyVerticalGrid(
         cells = GridCells.Fixed(2),
         verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.browse_recent_packs_list_items_spacing)),
@@ -24,7 +27,7 @@ fun RecentPacksList(recents: List<RecentPackItem>, modifier: Modifier = Modifier
             .heightIn(max = dimensionResource(R.dimen.browse_recent_packs_list_max_height))
     ) {
         items(recents) { pack ->
-            RecentPack(item = pack)
+            RecentPack(pack = pack, onRecentPackClick)
         }
     }
 }
