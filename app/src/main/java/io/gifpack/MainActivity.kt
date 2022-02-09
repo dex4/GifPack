@@ -6,20 +6,22 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import io.gifpack.feature.browse.fromSoftwarePacks
+import io.gifpack.feature.browse.browseScreenContent
 import io.gifpack.feature.browse.header.BrowseHeader
 import io.gifpack.feature.browse.model.BrowseListItem
 import io.gifpack.feature.browse.recentPacks
-import io.gifpack.feature.browse.recents.RecentPackItem
-import io.gifpack.feature.browse.recents.RecentPacksGrid
-import io.gifpack.feature.browse.recommendedsection.PackList
+import io.gifpack.feature.browse.recents.RecentPacks
+import io.gifpack.feature.browse.recommendedsection.PacksList
 import io.gifpack.feature.browse.recommendedsection.SectionHeader
 import io.gifpack.ui.theme.GifPackTheme
 
@@ -30,26 +32,28 @@ class MainActivity : ComponentActivity() {
         setContent {
             GifPackTheme {
                 Surface(
-                    color = MaterialTheme.colors.background,
-                    modifier = Modifier.padding(top = 24.dp)
+                    color = MaterialTheme.colors.background
                 ) {
-                    Column {
-                        BrowseHeader(modifier = Modifier.padding(start = 16.dp, end = 16.dp))
-                        SectionHeader(
-                            sectionHeader = BrowseListItem.SectionHeader(0, "Recents"),
-                            modifier = Modifier.padding(start = 16.dp, end = 16.dp)
-                        )
-                        RecentPacksGrid(recentPacks, modifier = Modifier.padding(start = 16.dp, end = 16.dp))
-                        SectionHeader(
-                            sectionHeader = BrowseListItem.SectionHeader(
-                                1,
-                                "From Software",
-                                "For fans of",
-                                "https://picsum.photos/id/92/200/200",
-                            ),
-                            modifier = Modifier.padding(start = 16.dp, end = 16.dp)
-                        )
-                        PackList(packs = fromSoftwarePacks, modifier = Modifier.padding(top = 12.dp))
+                    LazyColumn(modifier = Modifier.fillMaxSize()) {
+                        item {
+                            BrowseHeader(modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 24.dp))
+                        }
+                        items(browseScreenContent) { item ->
+                            when (item) {
+                                is BrowseListItem.RecentPacksList -> RecentPacks(
+                                    recentPacks,
+                                    modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 12.dp, bottom = 8.dp)
+                                )
+                                is BrowseListItem.SectionHeader -> SectionHeader(
+                                    sectionHeaderData = item.sectionHeaderData,
+                                    modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 12.dp)
+                                )
+                                is BrowseListItem.GifPacksList -> PacksList(
+                                    packs = item.gifPacks,
+                                    modifier = Modifier.padding(top = 12.dp)
+                                )
+                            }
+                        }
                     }
                 }
             }
@@ -68,7 +72,7 @@ fun DefaultPreview() {
         ) {
             Column {
                 Row { BrowseHeader() }
-                Row { RecentPacksGrid(recentPacks) }
+                Row { RecentPacks(recentPacks) }
             }
         }
     }

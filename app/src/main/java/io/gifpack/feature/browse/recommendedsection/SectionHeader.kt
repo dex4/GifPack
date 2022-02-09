@@ -12,15 +12,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import io.gifpack.feature.browse.model.BrowseListItem
 import io.gifpack.util.Image
 
 @Composable
-fun SectionHeader(sectionHeader: BrowseListItem.SectionHeader, modifier: Modifier = Modifier) {
+fun SectionHeader(sectionHeaderData: SectionHeaderData, modifier: Modifier = Modifier) {
     Row(verticalAlignment = Alignment.CenterVertically, modifier = modifier) {
-        sectionHeader.imageUrl?.let { imageUrl ->
+        sectionHeaderData.imageUrl?.let { imageUrl ->
             Image(
                 url = imageUrl,
                 modifier = Modifier
@@ -28,14 +26,11 @@ fun SectionHeader(sectionHeader: BrowseListItem.SectionHeader, modifier: Modifie
                     .size(56.dp)
             )
         }
-        Column(modifier = Modifier.padding(start = sectionHeader.determinePaddingForHeaderTitle())) {
-            sectionHeader.description?.let { description ->
+        Column(modifier = Modifier.padding(start = sectionHeaderData.determinePaddingForHeaderTitle())) {
+            sectionHeaderData.description?.let { description ->
                 Text(text = description.uppercase(), style = MaterialTheme.typography.overline)
             }
-            Text(text = sectionHeader.title, style = MaterialTheme.typography.h5, fontWeight = FontWeight.Bold)
+            Text(text = sectionHeaderData.title, style = MaterialTheme.typography.h5, fontWeight = FontWeight.Bold)
         }
     }
 }
-
-private fun BrowseListItem.SectionHeader.determinePaddingForHeaderTitle(): Dp =
-    if(imageUrl.isNullOrEmpty()) 0.dp else 8.dp

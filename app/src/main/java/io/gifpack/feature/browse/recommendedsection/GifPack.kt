@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import io.gifpack.util.Image
 
 @Composable
-fun PackList(packs: List<GifPackItem>, modifier: Modifier = Modifier) {
+fun PacksList(packs: List<GifPackItem>, modifier: Modifier = Modifier) {
     LazyRow(horizontalArrangement = Arrangement.spacedBy(12.dp), modifier = modifier, contentPadding = PaddingValues(horizontal = 16.dp)) {
         items(packs) { pack ->
             GifPack(pack = pack)
@@ -30,7 +30,7 @@ fun PackList(packs: List<GifPackItem>, modifier: Modifier = Modifier) {
 
 @Composable
 fun GifPack(pack: GifPackItem) {
-    Column(modifier = Modifier.size(width = 120.dp, height = 200.dp)) {
+    Column(modifier = Modifier.size(width = 120.dp, height = 180.dp)) {
         Image(
             url = pack.imageUrl,
             modifier = Modifier
