@@ -12,6 +12,9 @@
     <dimen name="horizontal_guideline">@dimen/spacing_delta</dimen>
     <dimen name="vertical_guideline">@dimen/spacing_zeta</dimen>
 
+    <dimen name="default_icon_size">24dp</dimen>
+    <dimen name="default_drawable_text_spacing">@dimen/spacing_beta</dimen>
+
     <!-- region Browse -->
     <dimen name="browse_list_margin_horizontal">@dimen/horizontal_guideline</dimen>
     <dimen name="browse_list_margin_top">@dimen/vertical_guideline</dimen>
