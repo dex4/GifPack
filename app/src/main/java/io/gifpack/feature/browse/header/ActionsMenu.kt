@@ -1,6 +1,5 @@
 package io.gifpack.feature.browse.header
 
-import android.content.Context
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -10,12 +9,11 @@ import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import io.gifpack.R
 import io.gifpack.util.Image
 
-typealias OnActionsMenuItemClick = (String, Context) -> Unit
+typealias OnActionsMenuItemClick = (String) -> Unit
 
 @Composable
 fun ActionsMenu(
@@ -25,7 +23,6 @@ fun ActionsMenu(
     onSettingsClick: OnActionsMenuItemClick,
     modifier: Modifier = Modifier
 ) {
-    val context = LocalContext.current
     Row(modifier = modifier) {
         Image(
             resId = getNotificationsRes(hasNotifications),
@@ -34,7 +31,7 @@ fun ActionsMenu(
                 .clickable(
                     interactionSource = remember { MutableInteractionSource() },
                     indication = rememberRipple(false),
-                    onClick = { onNotificationsClick("Notifications", context) }
+                    onClick = { onNotificationsClick("NotificationsScreen") }
                 )
         )
         Image(
@@ -44,7 +41,7 @@ fun ActionsMenu(
                 .clickable(
                     interactionSource = remember { MutableInteractionSource() },
                     indication = rememberRipple(false),
-                    onClick = { onHistoryClick("History", context) }
+                    onClick = { onHistoryClick("SharedHistoryScreen") }
                 )
         )
         Image(
@@ -52,7 +49,7 @@ fun ActionsMenu(
             modifier = modifier.clickable(
                 interactionSource = remember { MutableInteractionSource() },
                 indication = rememberRipple(false),
-                onClick = { onSettingsClick("Settings", context) }
+                onClick = { onSettingsClick("SettingsScreen") }
             )
         )
     }

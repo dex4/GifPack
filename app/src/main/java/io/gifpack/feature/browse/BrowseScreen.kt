@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import io.gifpack.R
 import io.gifpack.feature.browse.header.BrowseHeader
+import io.gifpack.feature.browse.header.OnActionsMenuItemClick
 import io.gifpack.feature.browse.model.BrowseListItem
 import io.gifpack.feature.browse.packslist.PacksList
 import io.gifpack.feature.browse.recents.RecentPacksList
@@ -19,14 +20,14 @@ import io.gifpack.feature.browse.sectionheader.SectionHeader
 
 @ExperimentalFoundationApi
 @Composable
-fun BrowseScreen() {
+fun BrowseScreen(onActionsMenuItemClick: OnActionsMenuItemClick) {
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         item {
             BrowseHeader(
                 true,
-                ::onActionMenuItemClicked,
-                ::onActionMenuItemClicked,
-                ::onActionMenuItemClicked,
+                { route -> onActionsMenuItemClick(route) },
+                { route -> onActionsMenuItemClick(route) },
+                { route -> onActionsMenuItemClick(route) },
                 Modifier.padding(
                     start = dimensionResource(R.dimen.browse_list_margin_horizontal),
                     end = dimensionResource(R.dimen.browse_list_margin_horizontal),
@@ -68,10 +69,6 @@ fun BrowseComposableForItemType(item: BrowseListItem) {
             modifier = Modifier.padding(top = dimensionResource(R.dimen.browse_list_items_spacing_vertical))
         )
     }
-}
-
-private fun onActionMenuItemClicked(itemName: String, context: Context) {
-    Toast.makeText(context, itemName, Toast.LENGTH_SHORT).show()
 }
 
 private fun onGifPackClick(packId: Int, context: Context) {
