@@ -33,4 +33,5 @@
     <dimen name="browse_packs_list_item_spacing">@dimen/spacing_gamma</dimen>
     <dimen name="browse_packs_list_horizontal_content_padding">@dimen/horizontal_guideline</dimen>
     <dimen name="browse_section_header_image_size">56dp</dimen>
+    <dimen name="browse_scroll_to_top_button_size">48dp</dimen>
 </resources>
