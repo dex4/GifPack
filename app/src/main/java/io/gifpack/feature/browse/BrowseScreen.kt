@@ -8,6 +8,7 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -41,7 +42,14 @@ fun BrowseScreen(onActionsMenuItemClick: OnActionsMenuItemClick) {
         val browseListState = rememberLazyListState()
         val coroutineScope = rememberCoroutineScope()
 
-        LazyColumn(modifier = Modifier.fillMaxSize(), state = browseListState) {
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(
+                bottom = dimensionResource(R.dimen.browse_scroll_to_top_button_size) +
+                        dimensionResource(R.dimen.browse_scroll_to_top_button_spacing_bottom)
+            ),
+            state = browseListState
+        ) {
             item {
                 BrowseHeader(
                     true,
@@ -68,13 +76,13 @@ fun BrowseScreen(onActionsMenuItemClick: OnActionsMenuItemClick) {
             exit = fadeOut(),
             modifier = Modifier
                 .align(Alignment.BottomEnd)
-                .padding(dimensionResource(R.dimen.horizontal_guideline))
+                .padding(dimensionResource(R.dimen.browse_scroll_to_top_button_spacing_bottom))
                 .clip(CircleShape)
                 .size(dimensionResource(R.dimen.browse_scroll_to_top_button_size))
         ) {
             FloatingActionButton(
                 onClick = { coroutineScope.launch { browseListState.animateScrollToItem(0) } },
-                backgroundColor = MaterialTheme.colors.onPrimary
+                backgroundColor = MaterialTheme.colors.primaryVariant
             ) {
                 Image(
                     painter = rememberImagePainter(R.drawable.ic_direction_indicator_up),
