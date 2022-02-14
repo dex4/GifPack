@@ -51,6 +51,8 @@ android {
 
 dependencies {
 
+    implementation project(':core')
+
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'androidx.activity:activity-compose:1.4.0'
@@ -79,6 +81,7 @@ dependencies {
 
     // DI
     implementation "com.google.dagger:hilt-android:$hilt_version"
+    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
 
     // ViewModel & Lifecycle
