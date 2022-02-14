@@ -36,7 +36,7 @@ val hollowKnight = listOf(
     GifPackData(3, "https://picsum.photos/id/44/200/200", "Pantheon", "Most awesome combos")
 )
 
-val browseScreenContent = listOf(
+val browseScreenData = listOf(
     BrowseListItem.SectionHeader(0, SectionHeaderData("Recents")),
     BrowseListItem.RecentPacksList(recentPacks),
     BrowseListItem.SectionHeader(

@@ -19,11 +19,13 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.dimensionResource
+import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberImagePainter
 import io.gifpack.R
 import io.gifpack.feature.browse.header.BrowseHeader
@@ -36,7 +38,12 @@ import kotlinx.coroutines.launch
 
 @ExperimentalFoundationApi
 @Composable
-fun BrowseScreen(onActionsMenuItemClick: OnActionsMenuItemClick) {
+fun BrowseScreen(
+    browseViewModel: BrowseViewModel = viewModel(),
+    onActionsMenuItemClick: OnActionsMenuItemClick
+) {
+
+    val browseScreenData = browseViewModel.browseScreenContent.observeAsState()
 
     Box {
         val browseListState = rememberLazyListState()
@@ -54,8 +61,6 @@ fun BrowseScreen(onActionsMenuItemClick: OnActionsMenuItemClick) {
                 BrowseHeader(
                     true,
                     { route -> onActionsMenuItemClick(route) },
-                    { route -> onActionsMenuItemClick(route) },
-                    { route -> onActionsMenuItemClick(route) },
                     Modifier.padding(
                         start = dimensionResource(R.dimen.browse_list_margin_horizontal),
                         end = dimensionResource(R.dimen.browse_list_margin_horizontal),
@@ -63,8 +68,10 @@ fun BrowseScreen(onActionsMenuItemClick: OnActionsMenuItemClick) {
                     )
                 )
             }
-            items(browseScreenContent) { item ->
-                BrowseComposableForItemType(item)
+            browseScreenData.value?.let { browseScreenItemsList ->
+                items(browseScreenItemsList) { item ->
+                    BrowseComposableForItemType(item)
+                }
             }
         }
 

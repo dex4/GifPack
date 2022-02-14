@@ -9,9 +9,7 @@ import androidx.compose.ui.Modifier
 @Composable
 fun BrowseHeader(
     hasNotifications: Boolean,
-    onNotificationsClick: OnActionsMenuItemClick,
-    onHistoryClick: OnActionsMenuItemClick,
-    onSettingsClick: OnActionsMenuItemClick,
+    onActionsMenuItemClick: OnActionsMenuItemClick,
     modifier: Modifier = Modifier
 ) {
     Row(
@@ -21,9 +19,7 @@ fun BrowseHeader(
         Greeting()
         ActionsMenu(
             hasNotifications,
-            onNotificationsClick,
-            onHistoryClick,
-            onSettingsClick
+            onActionsMenuItemClick
         )
     }
 }

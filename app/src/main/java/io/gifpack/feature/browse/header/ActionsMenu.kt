@@ -18,9 +18,7 @@ typealias OnActionsMenuItemClick = (String) -> Unit
 @Composable
 fun ActionsMenu(
     hasNotifications: Boolean,
-    onNotificationsClick: OnActionsMenuItemClick,
-    onHistoryClick: OnActionsMenuItemClick,
-    onSettingsClick: OnActionsMenuItemClick,
+    onActionsMenuItemClick: OnActionsMenuItemClick,
     modifier: Modifier = Modifier
 ) {
     Row(modifier = modifier) {
@@ -31,7 +29,7 @@ fun ActionsMenu(
                 .clickable(
                     interactionSource = remember { MutableInteractionSource() },
                     indication = rememberRipple(false),
-                    onClick = { onNotificationsClick("NotificationsScreen") }
+                    onClick = { onActionsMenuItemClick("NotificationsScreen") }
                 )
         )
         Image(
@@ -41,7 +39,7 @@ fun ActionsMenu(
                 .clickable(
                     interactionSource = remember { MutableInteractionSource() },
                     indication = rememberRipple(false),
-                    onClick = { onHistoryClick("SharedHistoryScreen") }
+                    onClick = { onActionsMenuItemClick("SharedHistoryScreen") }
                 )
         )
         Image(
@@ -49,7 +47,7 @@ fun ActionsMenu(
             modifier = modifier.clickable(
                 interactionSource = remember { MutableInteractionSource() },
                 indication = rememberRipple(false),
-                onClick = { onSettingsClick("SettingsScreen") }
+                onClick = { onActionsMenuItemClick("SettingsScreen") }
             )
         )
     }
