@@ -1,8 +1,8 @@
-package io.gifpack.feature.browse.model
+package io.gifpack.feature.browse.itemslist.model
 
-import io.gifpack.feature.browse.packslist.GifPackData
-import io.gifpack.feature.browse.recents.RecentPackItem
-import io.gifpack.feature.browse.sectionheader.SectionHeaderData
+import io.gifpack.feature.browse.itemslist.packslist.GifPackData
+import io.gifpack.feature.browse.itemslist.recents.RecentPackItem
+import io.gifpack.feature.browse.itemslist.sectionheader.SectionHeaderData
 
 sealed class BrowseListItem(val id: Int) {
 

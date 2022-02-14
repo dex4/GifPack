@@ -1,4 +1,4 @@
-package io.gifpack.feature.browse.header
+package io.gifpack.feature.browse.itemslist.header
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

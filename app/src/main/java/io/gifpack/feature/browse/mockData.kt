@@ -1,9 +1,9 @@
 package io.gifpack.feature.browse
 
-import io.gifpack.feature.browse.model.BrowseListItem
-import io.gifpack.feature.browse.packslist.GifPackData
-import io.gifpack.feature.browse.recents.RecentPackItem
-import io.gifpack.feature.browse.sectionheader.SectionHeaderData
+import io.gifpack.feature.browse.itemslist.model.BrowseListItem
+import io.gifpack.feature.browse.itemslist.packslist.GifPackData
+import io.gifpack.feature.browse.itemslist.recents.RecentPackItem
+import io.gifpack.feature.browse.itemslist.sectionheader.SectionHeaderData
 
 val recentPacks = listOf(
     RecentPackItem(0, "https://picsum.photos/id/12/200/200", "Dark Souls"),
@@ -37,23 +37,22 @@ val hollowKnight = listOf(
 )
 
 val browseScreenData = listOf(
-    BrowseListItem.SectionHeader(0, SectionHeaderData("Recents")),
     BrowseListItem.RecentPacksList(recentPacks),
     BrowseListItem.SectionHeader(
-        1, SectionHeaderData(
+        0, SectionHeaderData(
             "From Software",
             "For fans of",
             "https://picsum.photos/id/92/200/200",
         )
     ),
-    BrowseListItem.GifPacksList(2, fromSoftwarePacks),
+    BrowseListItem.GifPacksList(1, fromSoftwarePacks),
     BrowseListItem.SectionHeader(
-        3, SectionHeaderData(
+        2, SectionHeaderData(
             "CD Projekt Red",
             imageUrl = "https://picsum.photos/id/93/200/200"
         )
     ),
-    BrowseListItem.GifPacksList(4, cdProjektRed),
-    BrowseListItem.SectionHeader(5, SectionHeaderData("Hollow Knight")),
-    BrowseListItem.GifPacksList(6, hollowKnight)
+    BrowseListItem.GifPacksList(3, cdProjektRed),
+    BrowseListItem.SectionHeader(4, SectionHeaderData("Hollow Knight")),
+    BrowseListItem.GifPacksList(5, hollowKnight)
 )

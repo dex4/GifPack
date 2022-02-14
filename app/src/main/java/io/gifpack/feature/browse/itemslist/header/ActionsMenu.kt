@@ -1,4 +1,4 @@
-package io.gifpack.feature.browse.header
+package io.gifpack.feature.browse.itemslist.header
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.clickable

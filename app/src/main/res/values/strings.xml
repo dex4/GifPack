@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">GifPack</string>
+
+    <!-- region Browse -->
+    <string name="browse_error_state_title">Something Went Wrong :(</string>
+    <string name="browse_error_state_description">Unable to fetch data, please try again or come back later if the issue persists.</string>
+    <string name="browse_error_state_button_text">Retry</string>
 </resources>

@@ -1,4 +1,4 @@
-package io.gifpack.feature.browse.sectionheader
+package io.gifpack.feature.browse.itemslist.sectionheader
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,7 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import io.gifpack.R
 import io.gifpack.util.Image
 
