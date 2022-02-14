@@ -1,4 +1,4 @@
-package io.gifpack.feature.browse.packslist
+package io.gifpack.feature.browse.itemslist.packslist
 
 data class GifPackData(
     val packId: Int,

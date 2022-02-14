@@ -1,4 +1,4 @@
-package io.gifpack.feature.browse.sectionheader
+package io.gifpack.feature.browse.itemslist.sectionheader
 
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp

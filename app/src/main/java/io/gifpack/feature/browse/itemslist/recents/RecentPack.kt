@@ -1,4 +1,4 @@
-package io.gifpack.feature.browse.recents
+package io.gifpack.feature.browse.itemslist.recents
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background

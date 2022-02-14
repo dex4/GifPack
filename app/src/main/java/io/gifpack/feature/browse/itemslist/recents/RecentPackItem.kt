@@ -1,4 +1,4 @@
-package io.gifpack.feature.browse.recents
+package io.gifpack.feature.browse.itemslist.recents
 
 data class RecentPackItem(
     val packId: Int,

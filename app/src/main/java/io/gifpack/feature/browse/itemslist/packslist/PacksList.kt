@@ -1,4 +1,4 @@
-package io.gifpack.feature.browse.packslist
+package io.gifpack.feature.browse.itemslist.packslist
 
 import android.content.Context
 import androidx.compose.foundation.layout.Arrangement

@@ -1,4 +1,4 @@
-package io.gifpack.feature.browse.header
+package io.gifpack.feature.browse.itemslist.header
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -9,9 +9,7 @@ import androidx.compose.ui.Modifier
 @Composable
 fun BrowseHeader(
     hasNotifications: Boolean,
-    onNotificationsClick: OnActionsMenuItemClick,
-    onHistoryClick: OnActionsMenuItemClick,
-    onSettingsClick: OnActionsMenuItemClick,
+    onActionsMenuItemClick: OnActionsMenuItemClick,
     modifier: Modifier = Modifier
 ) {
     Row(
@@ -21,9 +19,7 @@ fun BrowseHeader(
         Greeting()
         ActionsMenu(
             hasNotifications,
-            onNotificationsClick,
-            onHistoryClick,
-            onSettingsClick
+            onActionsMenuItemClick
         )
     }
 }

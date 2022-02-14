@@ -1,4 +1,4 @@
-package io.gifpack.feature.browse.packslist
+package io.gifpack.feature.browse.itemslist.packslist
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource

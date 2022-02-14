@@ -1,4 +1,4 @@
-package io.gifpack.feature.browse.recents
+package io.gifpack.feature.browse.itemslist.recents
 
 import android.content.Context
 import androidx.compose.foundation.ExperimentalFoundationApi
