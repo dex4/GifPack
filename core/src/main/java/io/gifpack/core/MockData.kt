@@ -1,47 +1,6 @@
-package io.gifpack.data
+package io.gifpack.core
 
-internal data class GifDetailsDao(
-    val id: Int,
-    val url: String,
-    val name: String? = null,
-    val tags: List<String> = listOf()
-)
-
-internal fun GifDetailsDao.toGifDetails(): GifDetails = GifDetails(id, url, name, tags)
-
-internal fun List<GifDetailsDao>.mapToGifDetailsList(): List<GifDetails> = this.map { it.toGifDetails() }
-
-data class GifDetails(
-    val id: Int,
-    val url: String,
-    val name: String? = null,
-    val tags: List<String> = listOf()
-)
-
-internal data class GifsPackDao(
-    val id: Int,
-    val name: String?,
-    val gifsList: List<GifDetailsDao>,
-    val provider: String? = null,
-    val providerImageUrl: String? = null,
-    val imageUrl: String? = null,
-    val description: String? = null
-)
-
-data class GifsPack(
-    val id: Int,
-    val name: String?,
-    val gifsList: List<GifDetails>,
-    val provider: String? = null,
-    val providerImageUrl: String? = null,
-    val imageUrl: String? = null,
-    val description: String? = null
-)
-
-internal fun GifsPackDao.toGifsPack(): GifsPack =
-    GifsPack(id, name, gifsList.mapToGifDetailsList(), provider, providerImageUrl, imageUrl, description)
-
-internal fun List<GifsPackDao>.mapToGifsPackList(): List<GifsPack> = this.map { it.toGifsPack() }
+import io.gifpack.core.data.GifsPackDao
 
 const val CD_PROJEKT_RED_PROVIDER_NAME = "CD Projekt Red"
 const val FROM_SOFTWARE_PROVIDER_NAME = "From Software"
