@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "GifPack"
 include ':app'
+include ':core'

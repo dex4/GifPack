@@ -7,12 +7,13 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import dagger.hilt.android.AndroidEntryPoint
 import io.gifpack.feature.browse.BrowseScreen
+import io.gifpack.feature.browse.BrowseViewModel
 import io.gifpack.feature.notifications.NotificationsScreen
 import io.gifpack.feature.settings.SettingsScreen
 import io.gifpack.feature.sharedhistory.SharedHistoryScreen
@@ -20,7 +21,9 @@ import io.gifpack.ui.theme.GifPackTheme
 
 @ExperimentalAnimationApi
 @ExperimentalFoundationApi
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -29,7 +32,8 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     NavHost(navController = navController, startDestination = "BrowseScreen") {
                         composable("BrowseScreen") {
-                            BrowseScreen { route -> navController.navigate(route) }
+                            val browseViewModel = hiltViewModel<BrowseViewModel>()
+                            BrowseScreen(browseViewModel) { route -> navController.navigate(route) }
                         }
                         composable("NotificationsScreen") { NotificationsScreen() }
                         composable("SharedHistoryScreen") { SharedHistoryScreen() }
@@ -37,17 +41,6 @@ class MainActivity : ComponentActivity() {
                     }
                 }
             }
-        }
-    }
-}
-
-@ExperimentalFoundationApi
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    GifPackTheme {
-        Surface(color = MaterialTheme.colors.background) {
-            BrowseScreen {}
         }
     }
 }

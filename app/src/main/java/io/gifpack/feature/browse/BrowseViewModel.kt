@@ -5,12 +5,20 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.gifpack.core.GetGifPacksSuggestionsUseCase
+import io.gifpack.core.GetRecentPacksUseCase
+import io.gifpack.feature.browse.itemslist.model.BrowseListItem
+import io.gifpack.feature.browse.itemslist.model.mapToSuggestedSections
+import io.gifpack.feature.browse.itemslist.model.toRecentsSection
 import javax.inject.Inject
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @HiltViewModel
-class BrowseViewModel @Inject constructor() : ViewModel() {
+class BrowseViewModel @Inject constructor(
+    private val getRecentPacks: GetRecentPacksUseCase,
+    private val getGifPacksSuggestions: GetGifPacksSuggestionsUseCase
+) : ViewModel() {
 
     private val _browseScreenUiState = MutableLiveData<BrowseScreenUiState>(BrowseScreenUiState.Loading)
     val browseScreenUiState: LiveData<BrowseScreenUiState>
@@ -31,6 +39,15 @@ class BrowseViewModel @Inject constructor() : ViewModel() {
     }
 
     fun getBroseScreenData() {
-        _browseScreenUiState.value = BrowseScreenUiState.Ready(browseScreenData)
+        viewModelScope.launch {
+            val recentPacks = getRecentPacks()
+            val suggestedPacks = getGifPacksSuggestions()
+
+            val browseScreenItems = mutableListOf<BrowseListItem>()
+            browseScreenItems.add(recentPacks.toRecentsSection())
+            browseScreenItems.addAll(suggestedPacks.mapToSuggestedSections())
+
+            _browseScreenUiState.value = BrowseScreenUiState.Ready(browseScreenItems)
+        }
     }
 }
