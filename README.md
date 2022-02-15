@@ -16,6 +16,8 @@ Navigation with [Jetpack Navigation Component](https://developer.android.com/jet
 
 Image loading through [Coil](https://coil-kt.github.io/coil/compose/) for Compose
 
+Part of the mock images are provided by [Lorem Picsum](https://picsum.photos/)
+
 [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) used for async work
 
 TBI: Uses local [Room](https://developer.android.com/jetpack/androidx/releases/room) database for CRUD operations
