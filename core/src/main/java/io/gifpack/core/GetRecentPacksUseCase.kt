@@ -10,7 +10,7 @@ class GetRecentPacksUseCase @Inject constructor() {
 
     suspend operator fun invoke(): List<GifsPack> =
         withContext(IO) {
-            val recents = gifPacks.subList(0, 5)
+            val recents = gifPacks.subList(0, 6)
 
             recents.mapToGifsPackList()
         }

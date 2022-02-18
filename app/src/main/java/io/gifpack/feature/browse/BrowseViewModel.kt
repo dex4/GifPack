@@ -33,8 +33,9 @@ class BrowseViewModel @Inject constructor(
     init {
         _browseScreenUiState.value = BrowseScreenUiState.Loading
         viewModelScope.launch {
-            delay(3000L)
-            _browseScreenUiState.value = BrowseScreenUiState.Error
+//            delay(3000L)
+//            _browseScreenUiState.value = BrowseScreenUiState.Error
+            getBroseScreenData()
         }
     }
 

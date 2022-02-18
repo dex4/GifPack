@@ -17,18 +17,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import io.gifpack.R
+import io.gifpack.feature.browse.itemslist.OnPackClick
 import io.gifpack.util.Image
 
 @Composable
-fun RecentPack(pack: RecentPackItem, onRecentPackClick: OnRecentPackClick) {
-    val context = LocalContext.current
+fun RecentPack(pack: RecentPackItem, onPackClick: OnPackClick) {
     Row(
         modifier = Modifier
             .border(BorderStroke(0.dp, Color.Transparent))
@@ -37,7 +36,7 @@ fun RecentPack(pack: RecentPackItem, onRecentPackClick: OnRecentPackClick) {
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
                 indication = null,
-                onClick = { onRecentPackClick(pack.packId, context) }
+                onClick = { onPackClick(pack.packId) }
             ),
         verticalAlignment = Alignment.CenterVertically
     ) {
