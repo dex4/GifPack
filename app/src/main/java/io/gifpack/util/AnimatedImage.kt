@@ -1,6 +1,7 @@
 package io.gifpack.util
 
 import android.os.Build.VERSION.SDK_INT
+import android.os.Build.VERSION_CODES.P
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -11,6 +12,7 @@ import coil.decode.ImageDecoderDecoder
 import coil.request.ImageRequest
 import io.gifpack.R
 
+//TODO: Fix placeholder/error stretch
 @Composable
 fun AnimatedImage(
     url: String?,
@@ -20,7 +22,7 @@ fun AnimatedImage(
         painter = rememberImagePainter(
             ImageRequest.Builder(LocalContext.current)
                 .decoder(
-                    if (SDK_INT >= 28) {
+                    if (SDK_INT >= P) {
                         ImageDecoderDecoder(LocalContext.current)
                     } else {
                         GifDecoder()
