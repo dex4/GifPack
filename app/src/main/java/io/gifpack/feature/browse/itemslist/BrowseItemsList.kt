@@ -25,17 +25,16 @@ import androidx.compose.ui.res.dimensionResource
 import coil.compose.rememberImagePainter
 import io.gifpack.R
 import io.gifpack.feature.browse.itemslist.model.BrowseListItem
-import io.gifpack.feature.browse.itemslist.packslist.OnGifPackClick
 import io.gifpack.feature.browse.itemslist.packslist.PacksList
-import io.gifpack.feature.browse.itemslist.recents.OnRecentPackClick
 import io.gifpack.feature.browse.itemslist.recents.RecentPacksList
 import io.gifpack.feature.browse.itemslist.sectionheader.SectionHeader
-import io.gifpack.feature.browse.recentPacks
 import kotlinx.coroutines.launch
+
+typealias OnPackClick = (Int) -> Unit
 
 @ExperimentalFoundationApi
 @Composable
-fun BrowseItemsList(browseScreenItemsList: List<BrowseListItem>, onGifPackClick: OnGifPackClick, onRecentPackClick: OnRecentPackClick) {
+fun BrowseItemsList(browseScreenItemsList: List<BrowseListItem>, onPackClick: OnPackClick) {
     Box {
         val browseListState = rememberLazyListState()
         val coroutineScope = rememberCoroutineScope()
@@ -49,7 +48,7 @@ fun BrowseItemsList(browseScreenItemsList: List<BrowseListItem>, onGifPackClick:
             state = browseListState
         ) {
             items(browseScreenItemsList) { item ->
-                BrowseComposableForItemType(item, onGifPackClick, onRecentPackClick)
+                BrowseComposableForItemType(item, onPackClick)
             }
         }
 
@@ -80,11 +79,11 @@ fun BrowseItemsList(browseScreenItemsList: List<BrowseListItem>, onGifPackClick:
 
 @ExperimentalFoundationApi
 @Composable
-fun BrowseComposableForItemType(item: BrowseListItem, onGifPackClick: OnGifPackClick, onRecentPackClick: OnRecentPackClick) {
+fun BrowseComposableForItemType(item: BrowseListItem, onPackClick: OnPackClick) {
     when (item) {
         is BrowseListItem.RecentPacksList -> RecentPacksList(
-            recentPacks,
-            { packId, context -> onRecentPackClick(packId, context) },
+            item.packsList,
+            { packId -> onPackClick(packId) },
             modifier = Modifier.padding(
                 start = dimensionResource(R.dimen.browse_list_margin_horizontal),
                 end = dimensionResource(R.dimen.browse_list_margin_horizontal),
@@ -102,7 +101,7 @@ fun BrowseComposableForItemType(item: BrowseListItem, onGifPackClick: OnGifPackC
         )
         is BrowseListItem.GifPacksList -> PacksList(
             packs = item.gifPacks,
-            { packId, context -> onGifPackClick(packId, context) },
+            { packId -> onPackClick(packId) },
             modifier = Modifier.padding(top = dimensionResource(R.dimen.browse_list_items_spacing_vertical))
         )
     }

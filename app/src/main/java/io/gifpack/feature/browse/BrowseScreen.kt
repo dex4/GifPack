@@ -1,7 +1,5 @@
 package io.gifpack.feature.browse
 
-import android.content.Context
-import android.widget.Toast
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -16,6 +14,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import io.gifpack.R
 import io.gifpack.feature.browse.itemslist.BrowseItemsList
+import io.gifpack.feature.browse.itemslist.OnPackClick
 import io.gifpack.feature.browse.itemslist.header.BrowseHeader
 import io.gifpack.feature.browse.itemslist.header.OnActionsMenuItemClick
 import io.gifpack.util.ui.ContentLoadingIndicator
@@ -25,7 +24,8 @@ import io.gifpack.util.ui.ErrorScreen
 @Composable
 fun BrowseScreen(
     browseViewModel: BrowseViewModel = viewModel(),
-    onActionsMenuItemClick: OnActionsMenuItemClick
+    onActionsMenuItemClick: OnActionsMenuItemClick,
+    onPackClick: OnPackClick
 ) {
     val browseScreenUiState = browseViewModel.browseScreenUiState.observeAsState()
 
@@ -44,7 +44,7 @@ fun BrowseScreen(
             )
         )
         when (val state = browseScreenUiState.value) {
-            is BrowseScreenUiState.Ready -> BrowseItemsList(state.browseScreenData, ::onGifPackClick, ::onRecentPackClick)
+            is BrowseScreenUiState.Ready -> BrowseItemsList(state.browseScreenData) { packId -> onPackClick(packId) }
             is BrowseScreenUiState.Loading -> ContentLoadingIndicator(Modifier.fillMaxHeight())
             else -> ErrorScreen(
                 titleText = stringResource(R.string.browse_error_state_title),
@@ -55,12 +55,4 @@ fun BrowseScreen(
             )
         }
     }
-}
-
-private fun onGifPackClick(packId: Int, context: Context) {
-    Toast.makeText(context, packId.toString(), Toast.LENGTH_SHORT).show()
-}
-
-private fun onRecentPackClick(packId: Int, context: Context) {
-    Toast.makeText(context, packId.toString(), Toast.LENGTH_SHORT).show()
 }

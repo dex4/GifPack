@@ -13,16 +13,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import io.gifpack.R
+import io.gifpack.feature.browse.itemslist.OnPackClick
 import io.gifpack.util.Image
 
 @Composable
-fun GifPack(pack: GifPackData, onGifPackClick: OnGifPackClick) {
-    val context = LocalContext.current
+fun GifPack(pack: GifPackData, onPackClick: OnPackClick) {
     Column(
         modifier = Modifier
             .size(
@@ -33,7 +32,7 @@ fun GifPack(pack: GifPackData, onGifPackClick: OnGifPackClick) {
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
                 indication = null,
-                onClick = { onGifPackClick(pack.packId, context) }
+                onClick = { onPackClick(pack.packId) }
             )
     ) {
         Image(

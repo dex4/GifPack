@@ -7,7 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
 
     <!-- region Browse -->
     <color name="browse_recent_pack_background">#202020</color>
+
+    <!-- region Pack Details -->
+    <color name="pack_details_default_gradient_start_color">@color/black</color>
+    <color name="pack_details_gradient_end_color">@color/black</color>
+    <color name="pack_details_gif_name_gradient_start_color">@color/transparent</color>
+    <color name="pack_details_gif_name_gradient_end_color">@color/black</color>
 </resources>

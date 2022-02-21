@@ -40,4 +40,15 @@
     <!-- region Error State -->
     <dimen name="error_state_text_spacing_vertical">@dimen/spacing_zeta</dimen>
     <dimen name="error_state_button_spacing_vertical">48dp</dimen>
+
+    <!-- region Pack Details -->
+    <dimen name="pack_details_banner_image_size">200dp</dimen>
+    <dimen name="pack_details_banner_image_margin_top">@dimen/spacing_delta</dimen>
+    <dimen name="pack_details_title_margin_top">@dimen/spacing_delta</dimen>
+    <dimen name="pack_details_description_margin_top">@dimen/spacing_alpha</dimen>
+    <dimen name="pack_details_item_spacing">@dimen/spacing_gamma</dimen>
+    <dimen name="pack_details_items_list_margin_top">@dimen/spacing_beta</dimen>
+    <dimen name="pack_details_gif_height">110dp</dimen>
+    <dimen name="pack_details_gif_corner_radius">4dp</dimen>
+    <dimen name="pack_details_gif_name_spacing">@dimen/spacing_beta</dimen>
 </resources>
