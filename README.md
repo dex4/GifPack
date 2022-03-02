@@ -10,9 +10,9 @@ Implemented using [Jetpack Compose](https://developer.android.com/jetpack/compos
 
 UI following [Material](https://material.io/) guidelines
 
-Dependency Injection using [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
+Dependency Injection using [Koin](https://insert-koin.io/)
 
-Navigation with [Jetpack Navigation Component](https://developer.android.com/jetpack/compose/navigation) for Compose
+Navigation with [Jetpack Navigation Component](https://developer.android.com/jetpack/androidx/releases/navigation) for Fragments
 
 Image loading through [Coil](https://coil-kt.github.io/coil/compose/) for Compose
 
