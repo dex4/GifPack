@@ -13,7 +13,7 @@ import androidx.compose.ui.res.dimensionResource
 import io.gifpack.R
 import io.gifpack.util.Image
 
-typealias OnActionsMenuItemClick = (String) -> Unit
+typealias OnActionsMenuItemClick = (ActionsMenuOption) -> Unit
 
 @Composable
 fun ActionsMenu(
@@ -29,7 +29,7 @@ fun ActionsMenu(
                 .clickable(
                     interactionSource = remember { MutableInteractionSource() },
                     indication = rememberRipple(false),
-                    onClick = { onActionsMenuItemClick("NotificationsScreen") }
+                    onClick = { onActionsMenuItemClick(ActionsMenuOption.NOTIFICATIONS) }
                 )
         )
         Image(
@@ -39,7 +39,7 @@ fun ActionsMenu(
                 .clickable(
                     interactionSource = remember { MutableInteractionSource() },
                     indication = rememberRipple(false),
-                    onClick = { onActionsMenuItemClick("SharedHistoryScreen") }
+                    onClick = { onActionsMenuItemClick(ActionsMenuOption.SHARED_HISTORY) }
                 )
         )
         Image(
@@ -47,7 +47,7 @@ fun ActionsMenu(
             modifier = modifier.clickable(
                 interactionSource = remember { MutableInteractionSource() },
                 indication = rememberRipple(false),
-                onClick = { onActionsMenuItemClick("SettingsScreen") }
+                onClick = { onActionsMenuItemClick(ActionsMenuOption.SETTINGS) }
             )
         )
     }

@@ -1,6 +1,6 @@
 package io.gifpack.feature.browse.itemslist.model
 
-import io.gifpack.core.data.GifsPack
+import io.gifpack.core.data.model.GifsPack
 import io.gifpack.feature.browse.itemslist.packslist.GifPackData
 import io.gifpack.feature.browse.itemslist.packslist.mapToGifsPackDataList
 import io.gifpack.feature.browse.itemslist.recents.RecentPackItem

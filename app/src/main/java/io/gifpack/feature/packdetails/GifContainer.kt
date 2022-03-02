@@ -18,7 +18,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import io.gifpack.R
-import io.gifpack.core.data.GifDetails
+import io.gifpack.core.data.model.GifDetails
 import io.gifpack.util.AnimatedImage
 
 @Composable

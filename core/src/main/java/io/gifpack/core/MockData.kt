@@ -1,7 +1,7 @@
 package io.gifpack.core
 
-import io.gifpack.core.data.GifDetailsDao
-import io.gifpack.core.data.GifsPackDao
+import io.gifpack.core.data.dao.GifDetailsDao
+import io.gifpack.core.data.dao.GifsPackDao
 
 const val CD_PROJEKT_RED_PROVIDER_NAME = "CD Projekt Red"
 const val FROM_SOFTWARE_PROVIDER_NAME = "From Software"

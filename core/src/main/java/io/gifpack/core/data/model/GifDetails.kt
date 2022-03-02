@@ -1,4 +1,4 @@
-package io.gifpack.core.data
+package io.gifpack.core.data.model
 
 data class GifDetails(
     val id: Int,

@@ -1,6 +1,6 @@
 package io.gifpack.feature.browse.itemslist.packslist
 
-import io.gifpack.core.data.GifsPack
+import io.gifpack.core.data.model.GifsPack
 
 data class GifPackData(
     val packId: Int,

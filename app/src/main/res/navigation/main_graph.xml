@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/browseFragment">
+
+    <fragment
+        android:id="@+id/browseFragment"
+        android:name="io.gifpack.feature.browse.BrowseFragment"
+        android:label="BrowseFragment">
+
+        <action
+            android:id="@+id/action_browseFragment_to_packDetailsFragment"
+            app:destination="@id/packDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+
+            <argument
+                android:name="packId"
+                app:argType="integer" />
+        </action>
+
+        <action
+            android:id="@+id/action_browseFragment_to_notificationsFragment"
+            app:destination="@id/notificationsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_browseFragment_to_sharedHistoryFragment"
+            app:destination="@id/sharedHistoryFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_browseFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/packDetailsFragment"
+        android:name="io.gifpack.feature.packdetails.PackDetailsFragment"
+        android:label="PackDetailsFragment">
+
+        <argument
+            android:name="packId"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/notificationsFragment"
+        android:name="io.gifpack.feature.notifications.NotificationsFragment"
+        android:label="NotificationsFragment" />
+
+    <fragment
+        android:id="@+id/sharedHistoryFragment"
+        android:name="io.gifpack.feature.sharedhistory.SharedHistoryFragment"
+        android:label="SharedHistoryFragment" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="io.gifpack.feature.settings.SettingsFragment"
+        android:label="SettingsFragment" />
+</navigation>
