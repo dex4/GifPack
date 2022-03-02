@@ -1,4 +1,6 @@
-package io.gifpack.core.data
+package io.gifpack.core.data.dao
+
+import io.gifpack.core.data.model.GifDetails
 
 internal data class GifDetailsDao(
     val id: Int,

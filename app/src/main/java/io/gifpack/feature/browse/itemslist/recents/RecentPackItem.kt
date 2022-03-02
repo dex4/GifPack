@@ -1,6 +1,6 @@
 package io.gifpack.feature.browse.itemslist.recents
 
-import io.gifpack.core.data.GifsPack
+import io.gifpack.core.data.model.GifsPack
 
 data class RecentPackItem(
     val packId: Int,

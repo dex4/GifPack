@@ -4,18 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import dagger.hilt.android.lifecycle.HiltViewModel
 import io.gifpack.core.GetGifPacksSuggestionsUseCase
 import io.gifpack.core.GetRecentPacksUseCase
 import io.gifpack.feature.browse.itemslist.model.BrowseListItem
 import io.gifpack.feature.browse.itemslist.model.mapToSuggestedSections
 import io.gifpack.feature.browse.itemslist.model.toRecentsSection
-import javax.inject.Inject
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-@HiltViewModel
-class BrowseViewModel @Inject constructor(
+class BrowseViewModel(
     private val getRecentPacks: GetRecentPacksUseCase,
     private val getGifPacksSuggestions: GetGifPacksSuggestionsUseCase
 ) : ViewModel() {

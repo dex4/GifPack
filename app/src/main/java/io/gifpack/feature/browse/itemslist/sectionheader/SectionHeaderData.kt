@@ -2,7 +2,7 @@ package io.gifpack.feature.browse.itemslist.sectionheader
 
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import io.gifpack.core.data.GifsPack
+import io.gifpack.core.data.model.GifsPack
 
 data class SectionHeaderData(
     val title: String,

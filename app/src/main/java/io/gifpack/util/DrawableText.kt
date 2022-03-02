@@ -11,6 +11,7 @@ import coil.compose.rememberImagePainter
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,7 +27,7 @@ fun DrawableText(
     fontWeight: FontWeight = FontWeight.Normal,
     textSpacingFromDrawable: Dp = dimensionResource(R.dimen.default_drawable_text_spacing)
 ) {
-    Row(modifier) {
+    Row(modifier.wrapContentHeight(Alignment.Top)) {
         Image(
             painter = rememberImagePainter(drawable),
             contentDescription = null,
